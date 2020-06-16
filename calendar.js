@@ -32,7 +32,7 @@ function timeLapse(dateMin, dateMax) {
             date1.setMonth(date1.getMonth() + 1);
         }
     }
-    let content = "<div class='calendarBtns'><button id='prevBtn' onclick='callprev()' disabled>Atrás</button> | <button id='nextBtn' onclick='callnext()'>Siguiente</button> </div>";
+    let content = "<div class='calendarBtns'><button id='prevBtn' onclick='callprev()' disabled>Atrás</button> <button id='nextBtn' onclick='callnext()'>Siguiente</button> </div>";
     let weekDays = [
         {shortD:"Mon", fullD:"Lunes"}, 
         {shortD:"Tue", fullD:"Martes"}, 
@@ -95,17 +95,33 @@ function timeLapse(dateMin, dateMax) {
 }
 
 function callprev(){
-
+    let alltable=document.getElementsByClassName("calendarDiv");
+    document.getElementById('prevBtn').disabled = false;
+    calendarShow--;
+    if (calendarShow>=1){
+        for(let i=0; i <alltable.length; i++) {
+            alltable[i].style.display = "none";
+        }
+        document.getElementById("calendarGrid_"+calendarShow).style.display = "block";
+        if (calendarShow==1){
+            document.getElementById('prevBtn').disabled = true;
+        }
+    }
 }
 
 function callnext(){
     let alltable=document.getElementsByClassName("calendarDiv");
     document.getElementById('prevBtn').disabled = false;
     calendarShow++;
-    for(let i=0; i <alltable.length; i++) {
-        alltable[i].style.display = "none";
+    if (calendarShow<=alltable.length){
+        for(let i=0; i <alltable.length; i++) {
+            alltable[i].style.display = "none";
+        }
+        document.getElementById("calendarGrid_"+calendarShow).style.display = "block";
+        if (calendarShow==alltable.length){
+            document.getElementById('nextBtn').disabled = true;
+        }
     }
-    document.getElementById("calendarGrid_"+calendarShow).style.display = "block";
 }
 
 content = timeLapse(dateMin, dateMax);
