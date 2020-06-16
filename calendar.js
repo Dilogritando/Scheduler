@@ -60,33 +60,23 @@ function timeLapse(dateMin, dateMax) {
         let displayNum, idMonth; 
         while (d <= lastDate.getDate()){
             content += "<tr>"; 
-            /* "Siempre que d sea menor al último día de la fecha, agregue una fila" 
-            "Cada vez que se agregue una fila, tienen que agregarse columnas hasta llegar a 7" */
             for (k = 0; k < 7; k++){
                 displayNum = d < 10 ? "0" + d : d;
-                /* "Si el número a mostrar es menor a 10, póngale un 0 antes, de lo contrario déjelo igual" */
                 if (d==1){
-                   /*  "Si el número a mostrar es el primero del mes entonces..." */
                     if (firstDate.toString().split(" ")[0] == weekDays[k].shortD) {  
-                    /* "Si al volverlo string el día de la semana coincide con el índice en el que está la iteración de k en el array del cabezote... (ej. si cae en miércoles y en la tabla está en miércoles..." */
                     content += "<td>" + displayNum + "</td>";
                     d++;
-                    /* "Entonces agregue la etiqueta de celda con el display que le dije anteriormente, e itere sumando 1 al índice del número a mostrar, de lo contrario..." */
                     } else {
                         content += "<td></td>";
-                        /* "De lo contrario la etiqueta deberá estar vacía" */
                     }
                 } else if (d>lastDate.getDate()) {
-                    /* "Por otro lado, si el valor de d es mayor al último día que permite la fecha, también tiene que quedar vacía la celda" */
                     content += "<td></td>";
                 } else {
                     content += "<td>" + displayNum + "</td>";
                     d++;
-                    /* "Si no es igual a uno, pero es menor a la última fecha, deberá seguir llenando las celdas" */
                 }
             }
             content += "</tr>";
-            /* "Ya que se definieron los contenidos de cada fila, etiqueta para cerrar fila" */
         } 
         content+="</tbody>";
         content+="</table>";
