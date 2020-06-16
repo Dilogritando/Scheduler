@@ -1,6 +1,8 @@
 let dateMin = "2020/01/01";
 let dateMax = "2021/01/01";
 
+
+
 function settingDays(date, day){
     date = new Date(date);
     date.setDate(day);
@@ -30,7 +32,6 @@ function timeLapse(dateMin, dateMax) {
             date1.setMonth(date1.getMonth() + 1);
         }
     }
-    console.log(dates);
     let content = "";
     let weekDays = [
         {shortD:"Mon", fullD:"Lunes"}, 
@@ -46,8 +47,17 @@ function timeLapse(dateMin, dateMax) {
     for(let i=0; i<dates.length; i++){
         lastDate=dates[i];
         firstDate= new Date(dates[i].getFullYear(), dates[i].getMonth(), 1);
+        let monthO = (firstDate.toString().split(" ")[1]);
+        let traduccion = {
+            Jan: "Ene",
+            Apr: "Abr",
+            Aug: "Ago",
+            Dec: "Dic"
+        }; 
+        let mes =monthO.replace(/Jan|Apr|Aug|Dec/gi, function(matched){ return traduccion[matched];
+        });
         content+="<div id='calendarGrid_"+ (i+1) + "'>";
-        content+="<h2>"+ firstDate.toString().split(" ")[1] + "-"+ firstDate.getFullYear() +"</h2>"; 
+        content+="<h2>"+ mes + "-"+ firstDate.getFullYear() +"</h2>"; 
         content += "</div>";
         content+="<table >";
         content+="<thead >";
@@ -57,7 +67,7 @@ function timeLapse(dateMin, dateMax) {
         content+="</thead>";
         content+="<tbody >";
         let d = 1;
-        let displayNum, idMonth; 
+        let displayNum; 
         while (d <= lastDate.getDate()){
             content += "<tr>"; 
             for (k = 0; k < 7; k++) {
