@@ -1,29 +1,29 @@
-h1 {
-
+body {
+    font-family: 'Open Sans', sans-serif;
 }
-
-h2 {
-
-}
-
-
 
 #calendar {
-    border: solid rgb(0, 0, 0) 1px;
     width: 80%;
     margin-left: 5%;
     margin-top: 5%;
 }
 .calendarBtns {
     padding: 10px 0;
-    width: 100%;
+    width: 100%; 
+    display: flex;
+    justify-content: space-between;
+    height: 50px;
+    align-items: center;
 }
 
 .calendarBtns button{
-    padding: 6px 12px;
-    font-size: 18px;
-    border-radius: 6px;
+    padding: 6px 6px;
+    font-size: 12px;
+    border-radius: 25px;
     cursor: pointer;
+    background-color: #3d6891;
+    border: none;
+    color: white;
 }
 
 .calendarDiv {
@@ -34,18 +34,17 @@ h2 {
     display: block;
 }
 
-
 .calendarTable{
     width: 100%;
-    border: 1px solid rgb(128, 128, 128);
     padding: 5%;
+    align-items: center;
 }
 
 .calendarTable thead tr th{
-    background: rgb(38, 41, 223);
-    border-bottom: black 1px solid;
-    padding: 20px 0px;
+    background: #0085FF;
+    padding: 20px 5px;
     color: white;
+    border-radius: 5px;
 }
 .calendarTable tr td {
     text-align: center;

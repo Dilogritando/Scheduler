@@ -32,7 +32,7 @@ function timeLapse(dateMin, dateMax) {
             date1.setMonth(date1.getMonth() + 1);
         }
     }
-    let content = "<div class='calendarBtns'><button id='prevBtn' onclick='callprev()' disabled>Atrás</button> <button id='nextBtn' onclick='callnext()'>Siguiente</button> </div>";
+    let content = " ";
     let weekDays = [
         {shortD:"Mon", fullD:"Lunes"}, 
         {shortD:"Tue", fullD:"Martes"}, 
@@ -57,7 +57,7 @@ function timeLapse(dateMin, dateMax) {
         let mes =monthO.replace(/Jan|Apr|Aug|Dec/gi, function(matched){ return traduccion[matched];
         });
         content+="<div id='calendarGrid_"+ (i+1) + "' class='calendarDiv''>";
-        content+="<h2>"+ mes + "-"+ firstDate.getFullYear() +"</h2>"; 
+        content+="<div class='calendarBtns'><button id='prevBtn' onclick='callprev()' disabled> < Atrás </button> <h2>"+ mes + "-"+ firstDate.getFullYear() +"</h2> <button id='nextBtn' onclick='callnext()'> Siguiente > </button> </div>"; 
         content+="<table class='calendarTable'>";
         content+="<thead >";
         weekDays.map(item=>{
