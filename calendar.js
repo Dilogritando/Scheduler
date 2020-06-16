@@ -33,13 +33,13 @@ function timeLapse(dateMin, dateMax) {
     console.log(dates);
     let content = "";
     let weekDays = [
-        {shortD:"Lun", fullD:"Lunes"}, 
-        {shortD:"Mar", fullD:"Martes"}, 
-        {shortD:"Mier", fullD:"Miércoles"}, 
-        {shortD:"Jue", fullD:"Jueves"}, 
-        {shortD:"Vie", fullD:"Viernes"}, 
-        {shortD:"Sáb", fullD:"Sábado"}, 
-        {shortD:"Dom", fullD:"Domingo"}
+        {shortD:"Mon", fullD:"Lunes"}, 
+        {shortD:"Tue", fullD:"Martes"}, 
+        {shortD:"Wed", fullD:"Miércoles"}, 
+        {shortD:"Thu", fullD:"Jueves"}, 
+        {shortD:"Fri", fullD:"Viernes"}, 
+        {shortD:"Sat", fullD:"Sábado"}, 
+        {shortD:"Sun", fullD:"Domingo"}
     ];
     let lastDate, firstDate;
 
@@ -60,8 +60,8 @@ function timeLapse(dateMin, dateMax) {
         let displayNum, idMonth; 
         while (d <= lastDate.getDate()){
             content += "<tr>"; 
-            for (k = 0; k < 7; k++){
-                displayNum = d < 10 ? "0" + d : d;
+            for (k = 0; k < 7; k++) {
+                displayNum = d < 10 ? "0" + d : d
                 if (d==1){
                     if (firstDate.toString().split(" ")[0] == weekDays[k].shortD) {  
                     content += "<td>" + displayNum + "</td>";
@@ -83,5 +83,7 @@ function timeLapse(dateMin, dateMax) {
     }
     return content;
 }
+
 content = timeLapse(dateMin, dateMax);
-window.onload = (function (){document.getElementById("calendar").innerHTML=content}) 
+
+window.onload = (function (){document.getElementById("calendar").innerHTML=content})
