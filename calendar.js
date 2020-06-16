@@ -96,7 +96,8 @@ function timeLapse(dateMin, dateMax) {
                     } else {
                         content += "<td></td>";
                         /* "De lo contrario la etiqueta deberá estar vacía" */
-                    } } else if (d>lastDate.getDate()) {
+                    }} 
+                else if (d>lastDate.getDate()) {
                     /* "Por otro lado, si el valor de d es mayor al último día que permite la fecha, también tiene que quedar vacía la celda" */
                     content += "<td></td>";
                 } else {
@@ -104,21 +105,16 @@ function timeLapse(dateMin, dateMax) {
                     d++;
                     /* "Si no es igual a uno, pero es menor a la última fecha, deberá seguir llenando las celdas" */
                 }
-                }
             }
             content += "</tr>";
             /* "Ya que se definieron los contenidos de cada fila, etiqueta para cerrar fila" */
         } 
+        content+="</table>";
+        content+="</tbody>";
+        content+="</div>"; 
+        return content;
     }
-    return content;
+}
 
-/*                     content+="</tbody>";
-                    content+="</table>";
-                    content+="</div>"; */
-
-        
-var content = timeLapse(dateMin, dateMax);
-window.onload = (function (){
-    document.getElementById("calendar").innerHTML=content
-});
-        
+content = timeLapse(dateMin, dateMax);
+window.onload = (function (){document.getElementById("calendar").innerHTML=content}) 
