@@ -1,0 +1,61 @@
+h1 {
+
+}
+
+h2 {
+
+}
+
+
+
+#calendar {
+    border: solid rgb(0, 0, 0) 1px;
+    width: 80%;
+    margin-left: 5%;
+    margin-top: 5%;
+}
+.calendarBtns {
+    padding: 10px 0;
+    width: 100%;
+}
+
+.calendarBtns button{
+    padding: 6px 12px;
+    font-size: 18px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.calendarDiv {
+    display: none;
+}
+
+#calendarGrid_1{
+    display: block;
+}
+
+
+.calendarTable{
+    width: 100%;
+    border: 1px solid rgb(128, 128, 128);
+    padding: 5%;
+}
+
+.calendarTable thead tr th{
+    background: rgb(38, 41, 223);
+    border-bottom: black 1px solid;
+    padding: 20px 0px;
+    color: white;
+}
+.calendarTable tr td {
+    text-align: center;
+    padding: 5px 0;
+    cursor: pointer;
+    border: 1px solid blanchedalmond;
+    background-color: rgb(177, 177, 211);
+}
+
+footer {
+    font-size: 12px;
+    text-align: center;
+}

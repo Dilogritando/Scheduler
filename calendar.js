@@ -1,6 +1,6 @@
 let dateMin = "2020/01/01";
 let dateMax = "2021/01/01";
-
+let calendarShow = 1; 
 
 
 function settingDays(date, day){
@@ -32,7 +32,7 @@ function timeLapse(dateMin, dateMax) {
             date1.setMonth(date1.getMonth() + 1);
         }
     }
-    let content = "";
+    let content = "<div class='calendarBtns'><button id='prevBtn' onclick='callprev()' disabled>Atrás</button> | <button id='nextBtn' onclick='callnext()'>Siguiente</button>";
     let weekDays = [
         {shortD:"Mon", fullD:"Lunes"}, 
         {shortD:"Tue", fullD:"Martes"}, 
@@ -56,10 +56,9 @@ function timeLapse(dateMin, dateMax) {
         }; 
         let mes =monthO.replace(/Jan|Apr|Aug|Dec/gi, function(matched){ return traduccion[matched];
         });
-        content+="<div id='calendarGrid_"+ (i+1) + "'>";
+        content+="<div id='calendarGrid_"+ (i+1) + "' class='calendarDiv''>";
         content+="<h2>"+ mes + "-"+ firstDate.getFullYear() +"</h2>"; 
-        content += "</div>";
-        content+="<table >";
+        content+="<table class='calendarTable'>";
         content+="<thead >";
         weekDays.map(item=>{
             content+="<th >"+item.fullD+"</th>";
@@ -88,10 +87,25 @@ function timeLapse(dateMin, dateMax) {
             }
             content += "</tr>";
         } 
+        content += "</div>";
         content+="</tbody>";
         content+="</table>";
     }
     return content;
+}
+
+function callprev(){
+
+}
+
+function callnext(){
+    let alltable=document.getElementsByClassName("calendarDiv");
+    document.getElementById('prevBtn').disabled = false;
+    calendarShow++;
+    for(let i=0; i <alltable.length; i++) {
+        alltable[i].style.display = "none";
+    }
+    document.getElementById("calendarGrid_"+calendarShow).style.display = "block";
 }
 
 content = timeLapse(dateMin, dateMax);
