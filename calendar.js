@@ -32,7 +32,7 @@ function timeLapse(dateMin, dateMax) {
             date1.setMonth(date1.getMonth() + 1);
         }
     }
-    let content = "<div class='calendarBtns'><button id='prevBtn' onclick='callprev()' disabled>Atrás</button> | <button id='nextBtn' onclick='callnext()'>Siguiente</button>";
+    let content = "<div class='calendarBtns'><button id='prevBtn' onclick='callprev()' disabled>Atrás</button> | <button id='nextBtn' onclick='callnext()'>Siguiente</button> </div>";
     let weekDays = [
         {shortD:"Mon", fullD:"Lunes"}, 
         {shortD:"Tue", fullD:"Martes"}, 
@@ -87,9 +87,9 @@ function timeLapse(dateMin, dateMax) {
             }
             content += "</tr>";
         } 
-        content += "</div>";
         content+="</tbody>";
         content+="</table>";
+        content += "</div>";
     }
     return content;
 }
