@@ -1,8 +1,80 @@
 let dateMin = "2020/01/01";
 let dateMax = "2021/01/01";
 let calendarShow = 1; 
-let semana = 1;
 
+/* let appointment = {
+    psy: ID,
+    user: ID,
+    service: String, // Servicio
+    start_time: Date, // Inicio de cita
+    end_time: Date, // Fin de cita
+    duration: Number, // Duración de la cita
+    cost: Number, // Precio real
+	totalPayed: Number, // Cantidad que el usuario pago.
+    currency: String,
+	payed: Boolean,
+	status: String // ['Activa', 'Cancelada', 'Pendiente', 'Reagenda']
+}
+let cita = (appointment) {
+    Psiclogo=psy,
+    Paciente=user: ID,
+    Servicio=service: String, // Servicio
+    Inicio=start_time: Date, // Inicio de cita
+    Fin=end_time: Date, // Fin de cita
+    Duración=duration: Number, // Duración de la cita
+    Precio=cost: Number, // Precio real
+	Pagado=totalPayed: Number, // Cantidad que el usuario pago.
+    Moneda=currency: String,
+	Confirmado=payed: Boolean,
+	Estado=status: String // ['Activa', 'Cancelada', 'Pendiente', 'Reagenda']
+} */
+
+let horas = [
+    "5am",
+    " - ",
+    "6am",
+    " - ",
+    "7am",
+    " - ",
+    "8am",
+    " - ",
+    "9am",
+    " - ",
+    "10am",
+    " - ",
+    "11am",
+    " - ",
+    "12am",
+    " - ",
+    "1pm",
+    " - ",
+    "2pm",
+    " - ",
+    "3pm",
+    " - ",
+    "4pm",
+    " - ",
+    "5pm",
+    " - ",
+    "6pm",
+    " - ",
+    "7pm",
+    " - ",
+    "8pm",
+    " - ",
+    "9pm",
+    " - ",
+    "10pm",
+    " - ",
+];
+
+
+
+let horasT = horas.map(officeHours)
+
+function officeHours (hora) {
+    return "<span class='timecontainer'>"+ hora +"</span>"
+}
 
 function settingDays(date, day){
     date = new Date(date);
@@ -68,12 +140,15 @@ function timeLapse(dateMin, dateMax) {
         let d = 1;
         let displayNum; 
         while (d <= lastDate.getDate() ) {
+            /* if (ya hay un tr con id semana){ document.getElementsByClassName(".semana")style.display="none"} */
+
             content += "<tr class='semanas' id='semanaNo_" + (+1) + "'>"; 
+            
             for (k = 0; k < 7; k++) {
                 displayNum = d < 10 ? "0" + d : d;
                 if (d==1){
                     if (firstDate.toString().split(" ")[0] == weekDays[k].shortD) {  
-                        content += "<td id='dayCell'>" + "<div id='dayDisplay'>" + displayNum + "</div>" + "<div id='cellContent'></div>" + "</td>";
+                        content += "<td id='dayCell'>" + "<div id='dayDisplay'>" + displayNum + "</div>" + "<div id='cellContent'> <div id='hora'>" + horasT + " </div> <div id='openSlot'>" + "contentSchedule" +" </div> </div>" + "</td>";
                         d++;
                     } else {
                         content += "<td></td>";
@@ -81,12 +156,12 @@ function timeLapse(dateMin, dateMax) {
                 } else if (d>lastDate.getDate()) {
                     content += "<td></td>";
                 } else {
-                    content += "<td id='dayCell'>" + "<div id='dayDisplay'>" + displayNum + "</div>" + "<div id='cellContent'></div>" + "</td>";
+                    content += "<td id='dayCell'>" + "<div id='dayDisplay'>" + displayNum + "</div>" + "<div id='cellContent'> <div id='hora'>" + horasT + "</div> <div id='openSlot'>" + "contentSchedule" +"</div> </div>" + "</td>";
                     d++;
                 }
             }
             content += "</tr>";
-        } 
+        }         
         content+="</tbody>";
         content+="</table>";
         content += "</div>";
