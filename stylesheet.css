@@ -57,7 +57,6 @@ body {
     padding: 5px 0;
     border: 1px solid blanchedalmond;
     background-color: rgb(177, 177, 211);
-    /* height: auto; */
     height: fit-content;
 }
 
@@ -65,14 +64,12 @@ body {
     margin: 0;
     padding: 2px;
     width: 100%;
-    /* height: auto; */
     height: fit-content;
 }
 
 #dayDisplay {
     text-align: right;
     font-size: 12px;
-    /* height: auto; */
 }
 
 #cellContent {
@@ -80,23 +77,31 @@ body {
     width: 100%;
     display: grid;
     grid-template-columns: 30px auto;
-    grid-template-rows: auto, 20px;
-    gap: 2px;
+    gap: 4px;
     height: fit-content;
 }
 
 #hora {
     height: auto;
-    background-color: yellow;
-    font-size: 10px;
-    grid-auto-flow: column;
+    font-size: 12px;
+    display: grid;
+    gap: 4px;
+    background-color: #B1B1D3; 
+}
+
+.timecontainer {
+    background-color: #CFD2E4;
+    gap: 10px;
 }
 
 #openSlot {
     cursor: pointer;
-    background-color: teal;
-    height: 100px;
     width: 100%;
+    display: grid;
+    grid-template-rows: repeat(35, 1fr);
+    background-color:  rgb(207, 210, 228);
+    gap: 10px;
+    font-size: 14px;
 }
 
 .weekBtns {
