@@ -57,7 +57,7 @@ function timeLapse(dateMin, dateMax) {
         let mes =monthO.replace(/Jan|Apr|Aug|Dec/gi, function(matched){ return traduccion[matched];
         });
         content+="<div id='calendarGrid_"+ (i+1) + "' class='calendarDiv''>";
-        content+="<div class='calendarBtns'><button id='prevBtn' onclick='callprev()' disabled> < Atrás </button> <h2>"+ mes + "-"+ firstDate.getFullYear() +"</h2> <button id='nextBtn' onclick='callnext()'> Siguiente > </button> </div>"; 
+        content+="<div class='calendarBtns'><button id='prevBtn' onclick='callprev()' disabled> < Atrasar mes </button> <h2>"+ mes + "-"+ firstDate.getFullYear() +"</h2> <button id='nextBtn' onclick='callnext()'> Adelantar mes > </button> </div>"; 
         content+="<table class='calendarTable'>";
         content+="<thead >";
         weekDays.map(item=>{
@@ -73,7 +73,7 @@ function timeLapse(dateMin, dateMax) {
                 displayNum = d < 10 ? "0" + d : d
                 if (d==1){
                     if (firstDate.toString().split(" ")[0] == weekDays[k].shortD) {  
-                    content += "<td>" + displayNum + "</td>";
+                    content += "<td id='dayCell'>" + "<div id='dayDisplay'>" + displayNum + "</div>" + "<div id='cellContent'></div>" + "</td>";
                     d++;
                     } else {
                         content += "<td></td>";
@@ -81,11 +81,12 @@ function timeLapse(dateMin, dateMax) {
                 } else if (d>lastDate.getDate()) {
                     content += "<td></td>";
                 } else {
-                    content += "<td>" + displayNum + "</td>";
+                    content += "<td id='dayCell'>" + "<div id='dayDisplay'>" + displayNum + "</div>" + "<div id='cellContent'></div>" + "</td>";
                     d++;
                 }
             }
             content += "</tr>";
+
         } 
         content+="</tbody>";
         content+="</table>";
@@ -123,6 +124,10 @@ function callnext(){
         }
     }
 }
+
+/* function addnote(){ 
+    document.getElementById("theDiv")
+} */
 
 content = timeLapse(dateMin, dateMax);
 

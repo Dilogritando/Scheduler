@@ -11,7 +11,7 @@ body {
     padding: 10px 0;
     width: 100%; 
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     height: 50px;
     align-items: center;
 }
@@ -45,13 +45,30 @@ body {
     padding: 20px 5px;
     color: white;
     border-radius: 5px;
+    width: 76px;
 }
 .calendarTable tr td {
-    text-align: center;
     padding: 5px 0;
     cursor: pointer;
     border: 1px solid blanchedalmond;
     background-color: rgb(177, 177, 211);
+    height: auto;
+}
+
+#dayCell {
+    margin: 0;
+    padding: 2px;
+}
+
+#dayDisplay {
+    text-align: right;
+    font-size: 12px;
+}
+
+#cellContent {
+    border: 1px solid red;
+    width: 90%;
+    height: 4em;
 }
 
 footer {
