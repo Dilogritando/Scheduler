@@ -57,7 +57,7 @@ function timeLapse(dateMin, dateMax) {
         let mes =monthO.replace(/Jan|Apr|Aug|Dec/gi, function(matched){ return traduccion[matched];
         });
         content+="<div id='calendarGrid_"+ (i+1) + "' class='calendarDiv''>";
-        content+="<div class='calendarBtns'><button id='prevBtn' onclick='callprev()' disabled> < Atrasar mes </button> <h2>"+ mes + "-"+ firstDate.getFullYear() +"</h2> <button id='nextBtn' onclick='callnext()'> Adelantar mes > </button> </div>"; 
+        content+="<div class='calendarBtns'><button id='prevBtn' onclick='callprev()'> < Atrasar mes </button><h2>"+ mes + "-"+ firstDate.getFullYear() +"</h2> <button id='nextBtn' onclick='callnext()'> Adelantar mes > </button> </div>"; 
         content+="<table class='calendarTable'>";
         content+="<thead >";
         weekDays.map(item=>{
@@ -70,11 +70,11 @@ function timeLapse(dateMin, dateMax) {
         while (d <= lastDate.getDate()){
             content += "<tr>"; 
             for (k = 0; k < 7; k++) {
-                displayNum = d < 10 ? "0" + d : d
+                displayNum = d < 10 ? "0" + d : d;
                 if (d==1){
                     if (firstDate.toString().split(" ")[0] == weekDays[k].shortD) {  
-                    content += "<td id='dayCell'>" + "<div id='dayDisplay'>" + displayNum + "</div>" + "<div id='cellContent'></div>" + "</td>";
-                    d++;
+                        content += "<td id='dayCell'>" + "<div id='dayDisplay'>" + displayNum + "</div>" + "<div id='cellContent'></div>" + "</td>";
+                        d++;
                     } else {
                         content += "<td></td>";
                     }
@@ -86,16 +86,46 @@ function timeLapse(dateMin, dateMax) {
                 }
             }
             content += "</tr>";
-
+            
         } 
         content+="</tbody>";
         content+="</table>";
         content += "</div>";
     }
+    content+="<div class='weekBtns'><button id='prevWeek' onclick='prevWeek()' disabled> < Atrasar semana </button> <button id='nextWeek' onclick='nextWeek()'> Adelantar semana > </button> </div>";
     return content;
 }
 
 function callprev(){
+    let alltable=document.getElementsByClassName("calendarDiv");
+    document.getElementById("nextBtn").disabled = false;
+    calendarShow--;
+    if (calendarShow>=1){
+        for(let i=0; i <alltable.length; i++) {
+            alltable[i].style.display = "none";
+        }
+        document.getElementById("calendarGrid_"+calendarShow).style.display = "block";
+        if (calendarShow==1){
+            document.getElementById("prevBtn").disabled = true;
+        }
+    }
+}
+
+function callnext(){
+    let alltable=document.getElementsByClassName("calendarDiv");
+    document.getElementById("prevBtn").disabled = false;
+    calendarShow++;
+    if (calendarShow<=alltable.length){
+        for(let i=0; i < alltable.length; i++) {
+            alltable[i].style.display = "none";
+        }
+        document.getElementById("calendarGrid_"+ calendarShow).style.display = "block";
+        if (calendarShow==alltable.length){
+            document.getElementById("nextBtn").disabled = true;
+        }
+    }
+}
+/* function prevWeek(){
     let alltable=document.getElementsByClassName("calendarDiv");
     document.getElementById('prevBtn').disabled = false;
     calendarShow--;
@@ -110,7 +140,7 @@ function callprev(){
     }
 }
 
-function callnext(){
+function nextWeek(){
     let alltable=document.getElementsByClassName("calendarDiv");
     document.getElementById('prevBtn').disabled = false;
     calendarShow++;
@@ -124,6 +154,10 @@ function callnext(){
         }
     }
 }
+ */
+
+
+
 
 /* function addnote(){ 
     document.getElementById("theDiv")

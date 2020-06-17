@@ -19,9 +19,9 @@ body {
 .calendarBtns button{
     padding: 6px 6px;
     font-size: 12px;
-    border-radius: 25px;
+    border-radius: 15px;
     cursor: pointer;
-    background-color: #3d6891;
+    background-color: #86aacc;
     border: none;
     color: white;
 }
@@ -36,7 +36,7 @@ body {
 
 .calendarTable{
     width: 100%;
-    padding: 5%;
+    padding: 0 5%;
     align-items: center;
 }
 
@@ -69,6 +69,19 @@ body {
     border: 1px solid red;
     width: 90%;
     height: 4em;
+}
+
+.weekBtns {
+    text-align: center;
+}
+
+.weekBtns button{
+font-size: 12px;
+    border-radius: 15px;
+    cursor: pointer;
+    background-color: #86aacc;
+    border: none;
+    color: white;
 }
 
 footer {
