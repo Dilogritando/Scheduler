@@ -1,6 +1,7 @@
 let dateMin = "2020/01/01";
 let dateMax = "2021/01/01";
 let calendarShow = 1; 
+let semana = 1;
 
 
 function settingDays(date, day){
@@ -31,7 +32,7 @@ function timeLapse(dateMin, dateMax) {
             dates.push(temp);
             date1.setMonth(date1.getMonth() + 1);
         }
-    }
+    } /* Este cierra el while */
     let content = " ";
     let weekDays = [
         {shortD:"Mon", fullD:"Lunes"}, 
@@ -43,7 +44,6 @@ function timeLapse(dateMin, dateMax) {
         {shortD:"Sun", fullD:"Domingo"}
     ];
     let lastDate, firstDate;
-
     for(let i=0; i<dates.length; i++){
         lastDate=dates[i];
         firstDate= new Date(dates[i].getFullYear(), dates[i].getMonth(), 1);
@@ -67,8 +67,9 @@ function timeLapse(dateMin, dateMax) {
         content+="<tbody >";
         let d = 1;
         let displayNum; 
-        while (d <= lastDate.getDate()){
-            content += "<tr>"; 
+        while (d <= lastDate.getDate() ) {
+            /* let s; */
+            content += "<tr class='semanas'>"; 
             for (k = 0; k < 7; k++) {
                 displayNum = d < 10 ? "0" + d : d;
                 if (d==1){
@@ -86,15 +87,14 @@ function timeLapse(dateMin, dateMax) {
                 }
             }
             content += "</tr>";
-            
         } 
         content+="</tbody>";
         content+="</table>";
         content += "</div>";
     }
-    content+="<div class='weekBtns'><button id='prevWeek' onclick='prevWeek()' disabled> < Atrasar semana </button> <button id='nextWeek' onclick='nextWeek()'> Adelantar semana > </button> </div>";
+    content+="<div class='weekBtns'><button id='prevWeek' onclick='prevWeek()'> < Atrasar semana </button> <button id='nextWeek' onclick='nextWeek()'> Adelantar semana > </button> </div>";
     return content;
-}
+} /* este cierra el function timelapse */
 
 function callprev(){
     let alltable=document.getElementsByClassName("calendarDiv");
@@ -125,23 +125,22 @@ function callnext(){
         }
     }
 }
-/* function prevWeek(){
-    let alltable=document.getElementsByClassName("calendarDiv");
-    document.getElementById('prevBtn').disabled = false;
-    calendarShow--;
-    if (calendarShow>=1){
-        for(let i=0; i <alltable.length; i++) {
-            alltable[i].style.display = "none";
+{/* Funciones de botones de abajo function prevWeek(){
+    let allWeek=document.getElementsByClassName("semanas");
+    semanas--;
+    if (semanas>=1){
+        for(let i=0; i < allWeek.length; i++) {
+            allWeek[i].style.display = "none";
         }
         document.getElementById("calendarGrid_"+calendarShow).style.display = "block";
-        if (calendarShow==1){
-            document.getElementById('prevBtn').disabled = true;
+        if (semanas==1){
+            document.getElementById('prevWeek').disabled = true;
         }
     }
 }
 
 function nextWeek(){
-    let alltable=document.getElementsByClassName("calendarDiv");
+    let allweek=document.getElementsByClassName("calendarDiv");
     document.getElementById('prevBtn').disabled = false;
     calendarShow++;
     if (calendarShow<=alltable.length){
@@ -156,12 +155,10 @@ function nextWeek(){
 }
  */
 
-
-
-
 /* function addnote(){ 
     document.getElementById("theDiv")
 } */
+}
 
 content = timeLapse(dateMin, dateMax);
 
