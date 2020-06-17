@@ -68,8 +68,7 @@ function timeLapse(dateMin, dateMax) {
         let d = 1;
         let displayNum; 
         while (d <= lastDate.getDate() ) {
-            /* let s; */
-            content += "<tr class='semanas'>"; 
+            content += "<tr class='semanas' id='semanaNo_" + (+1) + "'>"; 
             for (k = 0; k < 7; k++) {
                 displayNum = d < 10 ? "0" + d : d;
                 if (d==1){
@@ -154,10 +153,6 @@ function nextWeek(){
     }
 }
  */
-
-/* function addnote(){ 
-    document.getElementById("theDiv")
-} */
 }
 
 content = timeLapse(dateMin, dateMax);

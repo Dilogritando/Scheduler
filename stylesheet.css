@@ -1,5 +1,10 @@
+#ticon {
+    width: 80%;
+}
+
 body {
     font-family: 'Open Sans', sans-serif;
+    margin: 15px 15px;
 }
 
 #calendar {
