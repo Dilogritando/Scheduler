@@ -41,6 +41,16 @@ h1, p {
     display: none;
 }
 
+.semanas {
+    display: none;
+    width: 100%;
+}
+
+#semanaNo_1{
+    display: table-row;
+    width: 100%;
+}
+
 #calendarGrid_1{
     display: block;
 }

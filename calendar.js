@@ -1,6 +1,7 @@
 let dateMin = "2020/01/01";
 let dateMax = "2021/01/01";
 let calendarShow = 1; 
+let weekNumber = 1; 
 
 /* let appointment = {
     psy: ID,
@@ -70,11 +71,23 @@ let horas = [
 
 let emptySlot = "<div id=emptySlot> CITA!! </div>"
 
-
 let horasT = horas.map(officeHours)
 
 function officeHours (hora) {
     return "<span class='timecontainer'>"+ hora +"</span>"
+}
+
+function espaciosCitas(){
+    return "Paciente: </br> Estado:  "
+    /* if (  //El api trajo info de cita// ) {
+       return "Paciente: </br> Estado:  " 
+    } else {
+        return "  "
+    } */
+}
+
+function dayScheduler(){
+    return "<table><tr id=filahorarios> <td id=displayHoras>" + horasT.join('') + "</td> <td id=displayCita>"+ espaciosCitas + "</td></tr></table>"
 }
 
 function settingDays(date, day){
@@ -131,6 +144,7 @@ function timeLapse(dateMin, dateMax) {
         });
         content+="<div id='calendarGrid_"+ (i+1) + "' class='calendarDiv''>";
         content+="<div class='calendarBtns'><button id='prevBtn' onclick='callprev()'> < Atrasar mes </button><h2>"+ mes + "-"+ firstDate.getFullYear() +"</h2> <button id='nextBtn' onclick='callnext()'> Adelantar mes > </button> </div>"; 
+        /* content+=dayScheduler; */
         content+="<table class='calendarTable'>";
         content+="<thead >";
         weekDays.map(item=>{
@@ -140,10 +154,11 @@ function timeLapse(dateMin, dateMax) {
         content+="<tbody >";
         let d = 1;
         let displayNum; 
+        let sn=0;
         while (d <= lastDate.getDate() ) {
             /* if (ya hay un tr con id semana){ document.getElementsByClassName(".semana")style.display="none"} */
-
-            content += "<tr class='semanas' id='semanaNo_" + (+1) + "'>"; 
+            sn++;
+            content += "<tr class='semanas' id='semanaNo_" + sn + "'>"; 
             
             for (k = 0; k < 7; k++) {
                 displayNum = d < 10 ? "0" + d : d;
@@ -202,14 +217,15 @@ function callnext(){
         }
     }
 }
-{/* Funciones de botones de abajo function prevWeek(){
-    let allWeek=document.getElementsByClassName("semanas");
-    semanas--;
-    if (semanas>=1){
+
+function prevWeek(){
+    let allWeek=document.getElementsByClass("semanas");
+    weekNumber--;
+    if (allWeek>1){
         for(let i=0; i < allWeek.length; i++) {
             allWeek[i].style.display = "none";
         }
-        document.getElementById("calendarGrid_"+calendarShow).style.display = "block";
+        document.getElementById("semanaNo_"+weekNumber).style.display = "block";
         if (semanas==1){
             document.getElementById('prevWeek').disabled = true;
         }
@@ -217,21 +233,21 @@ function callnext(){
 }
 
 function nextWeek(){
-    let allweek=document.getElementsByClassName("calendarDiv");
-    document.getElementById('prevBtn').disabled = false;
-    calendarShow++;
-    if (calendarShow<=alltable.length){
-        for(let i=0; i <alltable.length; i++) {
-            alltable[i].style.display = "none";
+    let allWeek=document.getElementsByClassName("semanas");
+    document.getElementById('prevWeek').disabled = false;
+    weekNumber++;
+    if (allWeek<=allWeek.length){
+        for(let i=0; i <allWeek.length; i++) {
+            allWeek[i].style.display = "none";
         }
-        document.getElementById("calendarGrid_"+calendarShow).style.display = "block";
-        if (calendarShow==alltable.length){
-            document.getElementById('nextBtn').disabled = true;
+        document.getElementById("semanaNo_"+weekNumber).style.display = "block";
+        if (weekNumber==allWeek.length){
+            document.getElementById('nextWeek').disabled = true;
         }
     }
 }
- */
-}
+
+
 
 content = timeLapse(dateMin, dateMax);
 
