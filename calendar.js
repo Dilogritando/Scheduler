@@ -215,13 +215,13 @@ function callnext(){
 
 function prevWeek(){
     document.getElementById("semanaNo_"+weekNumber).style.display = "table-row";
-    let allWeekArray=document.getElementsByClass("semanas");
+    let allWeekArray=document.getElementsByClassName("semanas");
     weekNumber--;
-    if (allWeekArray>1){
+    if (weekNumber<=allWeekArray.length){
         for(let i=0; i < allWeekArray.length; i++) {
             allWeekArray[i].style.display = "none";
         }
-    }
+        document.getElementById("semanaNo_"+weekNumber).style.display = "table-row";}
 }
 
 function nextWeek(){
@@ -232,7 +232,6 @@ function nextWeek(){
             allWeekArray[i].style.display = "none";
         }
         document.getElementById("semanaNo_"+weekNumber).style.display = "table-row";}
-    callnext
 }
 
 /* function nextWeek(){
