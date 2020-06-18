@@ -68,6 +68,7 @@ let horas = [
     " - ",
 ];
 
+let emptySlot = "<div id=emptySlot> CITA!! </div>"
 
 
 let horasT = horas.map(officeHours)
@@ -150,7 +151,7 @@ function timeLapse(dateMin, dateMax) {
                     if (firstDate.toString().split(" ")[0] == weekDays[k].shortD) {  
                         content += "<td id='dayCell'>" + "<div id='dayDisplay'>" + displayNum + "</div>" + 
                         "<div id='cellContent'> <div id='hora'>" + horasT.join('') +
-                        " </div> <div id='openSlot'>" + "contentSchedule" +" </div> </div>" + "</td>";
+                        " </div> <div id='openSlot'>" + emptySlot +" </div> </div>" + "</td>";
                         d++;
                     } else {
                         content += "<td></td>";
@@ -158,7 +159,7 @@ function timeLapse(dateMin, dateMax) {
                 } else if (d>lastDate.getDate()) {
                     content += "<td></td>";
                 } else {
-                    content += "<td id='dayCell'>" + "<div id='dayDisplay'>" + displayNum + "</div>" + "<div id='cellContent'> <div id='hora'>" + horasT.join('') + "</div> <div id='openSlot'>" + "contentSchedule" +"</div> </div>" + "</td>";
+                    content += "<td id='dayCell'>" + "<div id='dayDisplay'>" + displayNum + "</div>" + "<div id='cellContent'> <div id='hora'>" + horasT.join('') + "</div> <div id='openSlot'>" + emptySlot +"</div> </div>" + "</td>";
                     d++;
                 }
             }
