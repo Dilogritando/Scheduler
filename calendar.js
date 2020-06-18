@@ -182,15 +182,14 @@ function timeLapse(dateMin, dateMax) {
         }         
         content+="</tbody>";
         content+="</table>";
+        content+="<div class='weekBtns'> <button id='prevWeek' onclick='prevWeek()'> < Atrasar semana </button> <button id='nextWeek' onclick='nextWeek()'> Adelantar semana > </button> </div>";
         content += "</div>";
     }
-    content+="<div class='weekBtns'><button id='prevWeek' onclick='prevWeek()'> < Atrasar semana </button> <button id='nextWeek' onclick='nextWeek()'> Adelantar semana > </button> </div>";
     return content;
 } /* este cierra el function timelapse */
 
 function callprev(){
     let alltable=document.getElementsByClassName("calendarDiv");
-    document.getElementById("nextBtn").disabled = false;
     calendarShow--;
     if (calendarShow>=1){
         for(let i=0; i <alltable.length; i++) {
@@ -205,48 +204,46 @@ function callprev(){
 
 function callnext(){
     let alltable=document.getElementsByClassName("calendarDiv");
-    document.getElementById("prevBtn").disabled = false;
     calendarShow++;
     if (calendarShow<=alltable.length){
         for(let i=0; i < alltable.length; i++) {
             alltable[i].style.display = "none";
         }
         document.getElementById("calendarGrid_"+ calendarShow).style.display = "block";
-        if (calendarShow==alltable.length){
-            document.getElementById("nextBtn").disabled = true;
-        }
     }
 }
 
 function prevWeek(){
-    let allWeek=document.getElementsByClass("semanas");
+    document.getElementById("semanaNo_"+weekNumber).style.display = "table-row";
+    let allWeekArray=document.getElementsByClass("semanas");
     weekNumber--;
-    if (allWeek>1){
-        for(let i=0; i < allWeek.length; i++) {
-            allWeek[i].style.display = "none";
-        }
-        document.getElementById("semanaNo_"+weekNumber).style.display = "block";
-        if (semanas==1){
-            document.getElementById('prevWeek').disabled = true;
+    if (allWeekArray>1){
+        for(let i=0; i < allWeekArray.length; i++) {
+            allWeekArray[i].style.display = "none";
         }
     }
 }
 
 function nextWeek(){
-    let allWeek=document.getElementsByClassName("semanas");
-    document.getElementById('prevWeek').disabled = false;
+    let allWeekArray=document.getElementsByClassName("semanas");
     weekNumber++;
-    if (allWeek<=allWeek.length){
-        for(let i=0; i <allWeek.length; i++) {
-            allWeek[i].style.display = "none";
+    if (weekNumber<=allWeekArray.length){
+        for(let i=0; i < allWeekArray.length; i++) {
+            allWeekArray[i].style.display = "none";
         }
-        document.getElementById("semanaNo_"+weekNumber).style.display = "block";
-        if (weekNumber==allWeek.length){
-            document.getElementById('nextWeek').disabled = true;
-        }
-    }
+        document.getElementById("semanaNo_"+weekNumber).style.display = "table-row";}
+    callnext
 }
 
+/* function nextWeek(){
+    weekNumber++;
+    let allWeekArray=document.getElementsByClassName("semanas");
+    while (weekNumber<=allWeekArray.length) {
+        for(let i=0; i < allWeekArray.length; i++) {
+            allWeekArray[i].style.display = "none";}
+        document.getElementById("semanaNo_"+ weekNumber).style.display = "table-row";
+    } 
+} */
 
 
 content = timeLapse(dateMin, dateMax);

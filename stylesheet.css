@@ -71,7 +71,7 @@ h1, p {
     width: 76px;
 }
 .calendarTable tr td {
-    padding: 5px 0;
+    /* padding: 5px 0; */
     border: 1px solid blanchedalmond;
     background-color: rgb(177, 177, 211);
     height: fit-content;
@@ -93,22 +93,23 @@ h1, p {
     width: 90%;
     display: grid;
     grid-template-columns: 30px auto;
-    gap: 4px;
-    height: fit-content;
+    height: 505px;
+    /* gap: 2px; */
+    /* height: fit-content; */
 }
 
 #hora {
-    height: auto;
-    font-size: 12px;
+    height: fit-content;
     display: grid;
-    gap: 4px;
+    /* gap: 4px; */
     background-color: #B1B1D3; 
 }
 
 .timecontainer {
     background-color: #CFD2E4;
-    gap: 10px;
     margin: 2px 0;
+    height: 10px;
+    font-size: 9px;
 }
 
 #openSlot {
@@ -116,15 +117,18 @@ h1, p {
     width: 100%;
     display: grid;
     grid-template-rows: repeat(35, 1fr);
-    background-color: #B1B1D3; 
-    gap: 3px;
-    font-size: 11px;
+    height: 10px;
+    font-size: 9px;
+    margin: 0;
+    padding: 0;
 }
 
 #emptySlot {
-    background-color: #CFD2E4;
-    gap: 10px;
-    margin: 4px 0;
+    background-color: #14881a;
+    height: 10px;
+    font-size: 9px;
+    margin: 0;
+    padding: 0;
 }
 
 .weekBtns {
