@@ -44,7 +44,11 @@ let horasT = horas.map(officeHours)
 let arrito = [];
 
 function officeHours (hora) {
-    return "<span class='timecontainer'>"+ hora +"</span> <div id=emptySlot> </div>"
+    return "<span class='timecontainer'>"+ hora +"</span> <button id=emptySlot onclick='addDate()'> </button>"
+}
+
+function addDate() {
+    window.alert("Cita!!");;
 }
 
 function settingDays(date, day){
@@ -133,7 +137,6 @@ function timeLapse(dateMin, dateMax) {
                 }
             }
             content += "</tr>";
-           
         }         
         content+="</tbody>";
         content+="</table>";
@@ -141,7 +144,6 @@ function timeLapse(dateMin, dateMax) {
         content += "</div>";
         
         arrito.push(sn);
-    
     }
     
     return content;
@@ -183,22 +185,30 @@ function callnext(){
             allWeekArray[i].style.display = "none";
         }
         document.getElementById("semanaNo_"+weekNumber).style.display = "table-row";}
-}
-function nextWeek(){
-    let allWeekArray=document.getElementsByClassName("semanas");
+} */
+/* function nextWeek(){
+    
+    /* document.getElementById("semanaNo_"+arrito[i]).style.display = "table-row";
+
+    let mesactual = arrito[i]
+    for(i=0; i<=arrito.length; i++) {
+        while (mesactual.value 
+    } */
+
+
+    /* let allWeekArray=document.getElementsByClassName("semanas");
     weekNumber++;
     if (weekNumber<=allWeekArray.length){
         for(let i=0; i < allWeekArray.length; i++) {
             allWeekArray[i].style.display = "none";
         }
-        document.getElementById("semanaNo_"+weekNumber).style.display = "table-row";
     } else if (weekNumber !==allWeekArray[i]) {
         callnext
     }
-} */
-
+} 
+ */
 /* var list = ListaDeSemanas;
-var pageList = new Array();
+var pageList = arrito;
 var currentPage = 1;
 var numberPerPage = 1;
 var numberOfPages = 1;  
@@ -263,8 +273,16 @@ let cita = (appointment) {
 	Confirmado=payed: Boolean,
 	Estado=status: String // ['Activa', 'Cancelada', 'Pendiente', 'Reagenda']
 } */
-
-
+/* let MontNum = calendarShow-1 */
 content = timeLapse(dateMin, dateMax);
-console.log(arrito[0]);
+/* console.log("Esto es arrito: " + arrito);
+console.log("Esto es arrito.length: " + arrito.length);
+console.log("Esto es CalendarShow: " + calendarShow);
+console.log("Esto es MonthNum: " + MontNum);
+let allWeek=document.getElementsByClassName("semanas")
+
+
+let allWeekArray=Array.from(arrito.values)
+console.log(arrito[0]) */
+
 window.onload = (function (){document.getElementById("calendar").innerHTML=content})

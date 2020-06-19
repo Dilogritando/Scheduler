@@ -46,10 +46,10 @@ h1, p {
     width: 100%;
 } */
 
-#semanaNo_1{
+/* #semanaNo_1{
     display: table-row;
     width: 100%;
-}
+} */
 
 #calendarGrid_1{
     display: block;
@@ -90,7 +90,6 @@ h1, p {
 #cellContent {
     width: 90%;
     display: grid;
-    height: 505px;
     height: fit-content;
 }
 
@@ -119,6 +118,7 @@ h1, p {
     align-items: center;
     background: #fdfdfd6b;
     border-radius: 5px;
+    border: none;
 }
 
 .weekBtns {
