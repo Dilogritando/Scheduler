@@ -69,13 +69,13 @@ let horas = [
     " - ",
 ];
 
-let emptySlot = "<div id=emptySlot> CITA!! </div>"
-
 let horasT = horas.map(officeHours)
 
 function officeHours (hora) {
-    return "<span class='timecontainer'>"+ hora +"</span>"
+    return "<span class='timecontainer'>"+ hora +"</span> <div id=emptySlot> CITA!! </div>"
 }
+
+
 
 function espaciosCitas(){
     return "Paciente: </br> Estado:  "
@@ -166,7 +166,7 @@ function timeLapse(dateMin, dateMax) {
                     if (firstDate.toString().split(" ")[0] == weekDays[k].shortD) {  
                         content += "<td id='dayCell'>" + "<div id='dayDisplay'>" + displayNum + "</div>" + 
                         "<div id='cellContent'> <div id='hora'>" + horasT.join('') +
-                        " </div> <div id='openSlot'>" + emptySlot +" </div> </div>" + "</td>";
+                        " </div> </div>" + "</td>";
                         d++;
                     } else {
                         content += "<td></td>";
@@ -174,7 +174,7 @@ function timeLapse(dateMin, dateMax) {
                 } else if (d>lastDate.getDate()) {
                     content += "<td></td>";
                 } else {
-                    content += "<td id='dayCell'>" + "<div id='dayDisplay'>" + displayNum + "</div>" + "<div id='cellContent'> <div id='hora'>" + horasT.join('') + "</div> <div id='openSlot'>" + emptySlot +"</div> </div>" + "</td>";
+                    content += "<td id='dayCell'>" + "<div id='dayDisplay'>" + displayNum + "</div>" + "<div id='cellContent'> <div id='hora'>" + horasT.join('') + "</div> </div>" + "</td>";
                     d++;
                 }
             }
@@ -231,18 +231,11 @@ function nextWeek(){
         for(let i=0; i < allWeekArray.length; i++) {
             allWeekArray[i].style.display = "none";
         }
-        document.getElementById("semanaNo_"+weekNumber).style.display = "table-row";}
+        document.getElementById("semanaNo_"+weekNumber).style.display = "table-row";
+    } else if (weekNumber !==allWeekArray[i]) {
+        callnext
+    }
 }
-
-/* function nextWeek(){
-    weekNumber++;
-    let allWeekArray=document.getElementsByClassName("semanas");
-    while (weekNumber<=allWeekArray.length) {
-        for(let i=0; i < allWeekArray.length; i++) {
-            allWeekArray[i].style.display = "none";}
-        document.getElementById("semanaNo_"+ weekNumber).style.display = "table-row";
-    } 
-} */
 
 
 content = timeLapse(dateMin, dateMax);

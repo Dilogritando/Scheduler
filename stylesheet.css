@@ -89,46 +89,37 @@ h1, p {
 }
 
 #cellContent {
-    border: 1px solid red;
     width: 90%;
     display: grid;
-    grid-template-columns: 30px auto;
     height: 505px;
-    /* gap: 2px; */
-    /* height: fit-content; */
+    height: fit-content;
 }
 
 #hora {
     height: fit-content;
     display: grid;
-    /* gap: 4px; */
+    grid-template-columns: 30px auto;
+    grid-row: auto;
     background-color: #B1B1D3; 
+    gap: 3px 0;
 }
 
 .timecontainer {
-    background-color: #CFD2E4;
-    margin: 2px 0;
-    height: 10px;
-    font-size: 9px;
-}
-
-#openSlot {
-    cursor: pointer;
-    width: 100%;
-    display: grid;
-    grid-template-rows: repeat(35, 1fr);
-    height: 10px;
-    font-size: 9px;
-    margin: 0;
+    font-size: 15px;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.548);
     padding: 0;
+    text-align: right;
+/*     background: #0084ff6b; */
 }
 
 #emptySlot {
-    background-color: #14881a;
-    height: 10px;
-    font-size: 9px;
-    margin: 0;
-    padding: 0;
+    cursor: pointer;
+    font-size: 10px;
+    margin-left: 15px;
+    display: grid;
+    align-items: center;
+    background: #0084ff6b;
 }
 
 .weekBtns {
