@@ -2,34 +2,6 @@ let dateMin = "2020/01/01";
 let dateMax = "2021/01/01";
 let calendarShow = 1; 
 let weekNumber = 1; 
-
-/* let appointment = {
-    psy: ID,
-    user: ID,
-    service: String, // Servicio
-    start_time: Date, // Inicio de cita
-    end_time: Date, // Fin de cita
-    duration: Number, // Duración de la cita
-    cost: Number, // Precio real
-	totalPayed: Number, // Cantidad que el usuario pago.
-    currency: String,
-	payed: Boolean,
-	status: String // ['Activa', 'Cancelada', 'Pendiente', 'Reagenda']
-}
-let cita = (appointment) {
-    Psiclogo=psy,
-    Paciente=user: ID,
-    Servicio=service: String, // Servicio
-    Inicio=start_time: Date, // Inicio de cita
-    Fin=end_time: Date, // Fin de cita
-    Duración=duration: Number, // Duración de la cita
-    Precio=cost: Number, // Precio real
-	Pagado=totalPayed: Number, // Cantidad que el usuario pago.
-    Moneda=currency: String,
-	Confirmado=payed: Boolean,
-	Estado=status: String // ['Activa', 'Cancelada', 'Pendiente', 'Reagenda']
-} */
-
 let horas = [
     "5am",
     " - ",
@@ -68,26 +40,11 @@ let horas = [
     "10pm",
     " - ",
 ];
-
 let horasT = horas.map(officeHours)
+let arrito = [];
 
 function officeHours (hora) {
-    return "<span class='timecontainer'>"+ hora +"</span> <div id=emptySlot> CITA!! </div>"
-}
-
-
-
-function espaciosCitas(){
-    return "Paciente: </br> Estado:  "
-    /* if (  //El api trajo info de cita// ) {
-       return "Paciente: </br> Estado:  " 
-    } else {
-        return "  "
-    } */
-}
-
-function dayScheduler(){
-    return "<table><tr id=filahorarios> <td id=displayHoras>" + horasT.join('') + "</td> <td id=displayCita>"+ espaciosCitas + "</td></tr></table>"
+    return "<span class='timecontainer'>"+ hora +"</span> <div id=emptySlot> </div>"
 }
 
 function settingDays(date, day){
@@ -144,7 +101,6 @@ function timeLapse(dateMin, dateMax) {
         });
         content+="<div id='calendarGrid_"+ (i+1) + "' class='calendarDiv''>";
         content+="<div class='calendarBtns'><button id='prevBtn' onclick='callprev()'> < Atrasar mes </button><h2>"+ mes + "-"+ firstDate.getFullYear() +"</h2> <button id='nextBtn' onclick='callnext()'> Adelantar mes > </button> </div>"; 
-        /* content+=dayScheduler; */
         content+="<table class='calendarTable'>";
         content+="<thead >";
         weekDays.map(item=>{
@@ -156,10 +112,8 @@ function timeLapse(dateMin, dateMax) {
         let displayNum; 
         let sn=0;
         while (d <= lastDate.getDate() ) {
-            /* if (ya hay un tr con id semana){ document.getElementsByClassName(".semana")style.display="none"} */
             sn++;
             content += "<tr class='semanas' id='semanaNo_" + sn + "'>"; 
-            
             for (k = 0; k < 7; k++) {
                 displayNum = d < 10 ? "0" + d : d;
                 if (d==1){
@@ -179,12 +133,17 @@ function timeLapse(dateMin, dateMax) {
                 }
             }
             content += "</tr>";
+           
         }         
         content+="</tbody>";
         content+="</table>";
         content+="<div class='weekBtns'> <button id='prevWeek' onclick='prevWeek()'> < Atrasar semana </button> <button id='nextWeek' onclick='nextWeek()'> Adelantar semana > </button> </div>";
         content += "</div>";
+        
+        arrito.push(sn);
+    
     }
+    
     return content;
 } /* este cierra el function timelapse */
 
@@ -213,7 +172,9 @@ function callnext(){
     }
 }
 
-function prevWeek(){
+
+/* BotonesSemanales */
+/* function prevWeek(){
     document.getElementById("semanaNo_"+weekNumber).style.display = "table-row";
     let allWeekArray=document.getElementsByClassName("semanas");
     weekNumber--;
@@ -223,7 +184,6 @@ function prevWeek(){
         }
         document.getElementById("semanaNo_"+weekNumber).style.display = "table-row";}
 }
-
 function nextWeek(){
     let allWeekArray=document.getElementsByClassName("semanas");
     weekNumber++;
@@ -235,9 +195,76 @@ function nextWeek(){
     } else if (weekNumber !==allWeekArray[i]) {
         callnext
     }
+} */
+
+/* var list = ListaDeSemanas;
+var pageList = new Array();
+var currentPage = 1;
+var numberPerPage = 1;
+var numberOfPages = 1;  
+
+function loadWeeks(){
+    numberOfPages = getNumberOfPages();
 }
+
+function getNumberOfPages() {
+    return Math.ceil(list.length / numberPerPage);
+}
+
+function loadList() {
+    var begin = ((currentPage - 1) * numberPerPage);
+    var end = begin + numberPerPage;
+
+    pageList = list.slice(begin, end);
+    drawList();
+    check();
+}
+
+function drawList() {
+    document.getElementById("list").innerHTML = "";
+    
+    for (r = 0; r < pageList.length; r++) {
+        document.getElementById("list").innerHTML += pageList[r] + "";
+    }
+}
+
+function prevWeek(){
+    currentPage -= 1;
+    loadList();
+}
+function nextWeek(){
+    currentPage += 1;
+    loadList();
+} */
+
+/* let appointment = {
+    psy: ID,
+    user: ID,
+    service: String, // Servicio
+    start_time: Date, // Inicio de cita
+    end_time: Date, // Fin de cita
+    duration: Number, // Duración de la cita
+    cost: Number, // Precio real
+	totalPayed: Number, // Cantidad que el usuario pago.
+    currency: String,
+	payed: Boolean,
+	status: String // ['Activa', 'Cancelada', 'Pendiente', 'Reagenda']
+}
+let cita = (appointment) {
+    Psiclogo=psy,
+    Paciente=user: ID,
+    Servicio=service: String, // Servicio
+    Inicio=start_time: Date, // Inicio de cita
+    Fin=end_time: Date, // Fin de cita
+    Duración=duration: Number, // Duración de la cita
+    Precio=cost: Number, // Precio real
+	Pagado=totalPayed: Number, // Cantidad que el usuario pago.
+    Moneda=currency: String,
+	Confirmado=payed: Boolean,
+	Estado=status: String // ['Activa', 'Cancelada', 'Pendiente', 'Reagenda']
+} */
 
 
 content = timeLapse(dateMin, dateMax);
-
+console.log(arrito[0]);
 window.onload = (function (){document.getElementById("calendar").innerHTML=content})

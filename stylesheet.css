@@ -41,10 +41,10 @@ h1, p {
     display: none;
 }
 
-.semanas {
+/* .semanas {
     display: none;
     width: 100%;
-}
+} */
 
 #semanaNo_1{
     display: table-row;
@@ -71,7 +71,6 @@ h1, p {
     width: 76px;
 }
 .calendarTable tr td {
-    /* padding: 5px 0; */
     border: 1px solid blanchedalmond;
     background-color: rgb(177, 177, 211);
     height: fit-content;
@@ -110,7 +109,6 @@ h1, p {
     color: rgba(255, 255, 255, 0.548);
     padding: 0;
     text-align: right;
-/*     background: #0084ff6b; */
 }
 
 #emptySlot {
@@ -119,7 +117,8 @@ h1, p {
     margin-left: 15px;
     display: grid;
     align-items: center;
-    background: #0084ff6b;
+    background: #fdfdfd6b;
+    border-radius: 5px;
 }
 
 .weekBtns {
