@@ -1,7 +1,7 @@
 let dateMin = "2020/01/01";
 let dateMax = "2021/01/01"; 
 let calendarShow = 1; 
-let contadorSemanas= 1;  
+let weekNumber= 1;  
 let horas = [
     "5am",
     "5:30am",
@@ -42,7 +42,6 @@ let horas = [
 ];
 let arrito = [];
 let sn=1 
-let identificadorDia
 
 function addDate(hora,ano,mesNo,diaNo) {
     var respuesta = window.prompt(`Indica los detalles de tu cita el: ${diaNo} de ${mesNo} del ${ano} a las ${hora}`, `Nombre del doctor / Estado`);
@@ -153,6 +152,31 @@ function timeLapse(dateMin, dateMax) {
     return content;
 } /* este cierra el function timelapse */
 
+function callprev(){
+    let alltable=document.getElementsByClassName("calendarDiv");
+    calendarShow--;
+    if (calendarShow>=1){
+        for(let i=0; i <alltable.length; i++) {
+            alltable[i].style.display = "none";
+        }
+        document.getElementById("calendarGrid_"+calendarShow).style.display = "block";
+        if (calendarShow==1){
+            document.getElementById("prevBtn").disabled = true;
+        }
+    }
+}
+
+function callnext(){
+    let alltable=document.getElementsByClassName("calendarDiv");
+    calendarShow++;
+    if (calendarShow<=alltable.length){
+        for(let i=0; i < alltable.length; i++) {
+            alltable[i].style.display = "none";
+        }
+        document.getElementById("calendarGrid_"+ calendarShow).style.display = "block";
+    }
+}
+
 function prevWeek(){
     document.getElementById("semanaNo_"+weekNumber).style.display = "table-row";
     let allWeekArray=document.getElementsByClassName("semanas");
@@ -173,12 +197,6 @@ function nextWeek(){
         }
         document.getElementById("semanaNo_"+weekNumber).style.display = "table-row";}
 }
-
-/* function nextWeek(){
-    let currentWeek=document.getElementById("semanaNo_"+ sn);
-    sn++;
-    document.getElementById("semanaNo_"+ sn).style.display = "table-row";
-} */
 
 content = timeLapse(dateMin, dateMax);
 window.onload = (function (){document.getElementById("calendar").innerHTML=content})
