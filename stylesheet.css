@@ -13,17 +13,25 @@ h1, #description {
     margin: 0 50px;
 }
 
+h2 {
+    padding: 0;
+    margin: 0 50px;
+}
+
 #calendar {
     width: 100%;
     margin: 15px 0;
+    text-align: center;
 }
 .calendarBtns {
     padding: 10px 0;
     width: 80%; 
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     height: 50px;
     align-items: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .calendarBtns button{
@@ -38,6 +46,8 @@ h1, #description {
 
 .calendarDiv {
     display: none;
+    text-align: center;
+    justify-content: center;
 }
 
 .semanas {
@@ -58,6 +68,8 @@ h1, #description {
     width: 80%;
     align-items: center;
     box-sizing: border-box;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .calendarTable thead tr th{
@@ -74,24 +86,23 @@ h1, #description {
     height: fit-content;
 }
 
-#dayCell {
+.dayCell {
     margin: 0;
-    padding: 2px;
     height: fit-content;
 }
 
-#dayDisplay {
+.dayDisplay {
     text-align: right;
     font-size: 16px;
 }
 
-#cellContent {
+.cellContent {
     width: 90%;
     display: grid;
     height: fit-content;
 }
 
-#scheduler {
+.scheduler {
     height: fit-content;
     display: grid;
     grid-template-columns: 30px auto;
@@ -99,7 +110,7 @@ h1, #description {
     background-color: #B1B1D3; 
     gap: 3px 0;
     color: white;
-    font-size: 15px;
+    font-size: 12px;
     font-weight: bold;
     padding: 0;
     margin: 0;
@@ -112,7 +123,8 @@ h1, #description {
     text-align: start;
     height: fit-content;
     width: 90%;
-    margin: 0px 5px;
+    margin: 0px;
+    margin-left: 12px;
     font-size: 10px;
     cursor: pointer;
     border-radius: 5px;
@@ -122,22 +134,18 @@ h1, #description {
     background-color: tomato;
 }
 
-
-.semanas:first-child {
-   border: 50px solid red;
-  }
-
 .weekBtns {
     text-align: center;
 }
 
 .weekBtns button{
-font-size: 12px;
+    font-size: 12px;
     border-radius: 15px;
     cursor: pointer;
-    background-color: #86aacc;
+    background-color: #4674a0;
     border: none;
     color: white;
+    height: 20px;
 }
 
 footer {

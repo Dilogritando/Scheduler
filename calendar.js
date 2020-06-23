@@ -6,52 +6,51 @@ let horas = [
     "5am",
     "5:30am",
     "6am",
-    " - ",
+    "6:30am",
     "7am",
-    " - ",
+    "7:30am",
     "8am",
-    " - ",
+    "8:30am",
     "9am",
-    " - ",
+    "9:30am",
     "10am",
-    " - ",
+    "10:30am",
     "11am",
-    " - ",
-    "12am",
-    " - ",
+    "11:30am",
+    "12pm",
+    "12:30pm",
     "1pm",
-    " - ",
+    "1:30pm",
     "2pm",
-    " - ",
+    "2:30pm",
     "3pm",
-    " - ",
+    "3:30pm",
     "4pm",
-    " - ",
+    "4:30pm",
     "5pm",
-    " - ",
+    "5:30pm",
     "6pm",
-    " - ",
+    "6:30pm",
     "7pm",
-    " - ",
+    "7:30pm",
     "8pm",
-    " - ",
+    "8:30pm",
     "9pm",
-    " - ",
+    "9:30pm",
     "10pm",
-    " - ",
+    "10:30pm",
 ];
 let arrito = [];
 let sn=1 
 let identificadorDia
 
 function addDate(hora,ano,mesNo,diaNo) {
-    var respuesta = window.prompt(`Indica los detalles de tu cita el: ${hora}`, `Nombre del doctor / Estado`);
+    var respuesta = window.prompt(`Indica los detalles de tu cita el: ${diaNo} de ${mesNo} del ${ano} a las ${hora}`, `Nombre del doctor / Estado`);
     window.alert("La info de tu cita:"+ respuesta);
 }
 
-function officeHours (hora,ano,mesNo,diaNo) { 
- /*    let dateReference = "H${hora}A${ano}M${mesNo}D${diaNo}" */
-    return `${hora} <p class=emptySlot id='H${hora}A${ano}M${mesNo}D${diaNo}' onclick="addDate('${hora}', ${ano})"> <strong>Doctor:</strong> </br> Estado:</p>`
+function officeHours (hora,ano,mesNo,diaNo) {
+    return `${hora} <p class=emptySlot id='H${hora}A${ano}M${mesNo}D${diaNo}' onclick="addDate('${hora}', ${ano}, ${mesNo}, ${diaNo})"> <strong>Doctor:</strong> </br> Estado:</p>`
 } 
 
 function settingDays(date, day){
@@ -108,6 +107,7 @@ function timeLapse(dateMin, dateMax) {
         });
         content+="<div id='calendarGrid_"+ (i+1) + "' class='calendarDiv''>";
         content+="<div class='calendarBtns'><button id='prevBtn' onclick='callprev()'> < Atrasar mes </button><h2>"+ mes + "-"+ firstDate.getFullYear() +"</h2> <button id='nextBtn' onclick='callnext()'> Adelantar mes > </button> </div>"; 
+        content+="<div class='weekBtns'> <button id='prevWeek' onclick='prevWeek()'> < Atrasar semana </button> <button id='nextWeek' onclick='nextWeek()'> Adelantar semana > </button> </div>";
         content+="<table class='calendarTable'>";
         content+="<thead >";
         weekDays.map(item=>{
@@ -126,8 +126,8 @@ function timeLapse(dateMin, dateMax) {
                 let horasT = horas.map(item => officeHours(item,firstDate.getFullYear(),(i+1),d));
                 if (d==1){
                     if (firstDate.toString().split(" ")[0] == weekDays[k].shortD) {  
-                        content += "<td id='dayCell'>" + "<div id='dayDisplay'>" + displayNum + "</div>" + 
-                        "<div id='cellContent'> <div id='scheduler'>" + horasT.join('') +
+                        content += "<td class='dayCell'>" + "<div class='dayDisplay'>" + displayNum + "</div>" + 
+                        "<div class='cellContent'> <div class='scheduler'>" + horasT.join('') +
                         " </div> </div>" + "</td>";
                         d++;
                     } else {
@@ -136,7 +136,7 @@ function timeLapse(dateMin, dateMax) {
                 } else if (d>lastDate.getDate()) {
                     content += "<td></td>";
                 } else {
-                    content += "<td id='dayCell'>" + "<div id='dayDisplay'>" + displayNum + "</div>" + "<div id='cellContent'> <div id='scheduler'>" + horasT.join('') + "</div> </div>" + "</td>";
+                    content += "<td class='dayCell'>" + "<div class='dayDisplay'>" + displayNum + "</div>" + "<div class='cellContent'> <div class='scheduler'>" + horasT.join('') + "</div> </div>" + "</td>";
                     d++;
                 }
             }
@@ -153,29 +153,25 @@ function timeLapse(dateMin, dateMax) {
     return content;
 } /* este cierra el function timelapse */
 
-function callprev(){
-    let alltable=document.getElementsByClassName("calendarDiv");
-    calendarShow--;
-    if (calendarShow>=1){
-        for(let i=0; i <alltable.length; i++) {
-            alltable[i].style.display = "none";
+function prevWeek(){
+    document.getElementById("semanaNo_"+weekNumber).style.display = "table-row";
+    let allWeekArray=document.getElementsByClassName("semanas");
+    weekNumber--;
+    if (weekNumber<=allWeekArray.length){
+        for(let i=0; i < allWeekArray.length; i++) {
+            allWeekArray[i].style.display = "none";
         }
-        document.getElementById("calendarGrid_"+calendarShow).style.display = "block";
-        if (calendarShow==1){
-            document.getElementById("prevBtn").disabled = true;
-        }
-    }
+        document.getElementById("semanaNo_"+weekNumber).style.display = "table-row";}
 }
 
-function callnext(){
-    let alltable=document.getElementsByClassName("calendarDiv");
-    calendarShow++;
-    if (calendarShow<=alltable.length){
-        for(let i=0; i < alltable.length; i++) {
-            alltable[i].style.display = "none";
+function nextWeek(){
+    let allWeekArray=document.getElementsByClassName("semanas");
+    weekNumber++;
+    if (weekNumber<=allWeekArray.length){
+        for(let i=0; i < allWeekArray.length; i++) {
+            allWeekArray[i].style.display = "none";
         }
-        document.getElementById("calendarGrid_"+ calendarShow).style.display = "block";
-    }
+        document.getElementById("semanaNo_"+weekNumber).style.display = "table-row";}
 }
 
 /* function nextWeek(){
