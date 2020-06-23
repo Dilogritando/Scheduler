@@ -43,13 +43,15 @@ let horas = [
 let arrito = [];
 let sn=1 
 
-function addDate(hora,ano,mesNo,diaNo) {
-    var respuesta = window.prompt(`Indica los detalles de tu cita el: ${diaNo} de ${mesNo} del ${ano} a las ${hora}`, `Nombre del doctor / Estado`);
-    window.alert("La info de tu cita:"+ respuesta);
+function addAppointment(hora,ano,mesNo,diaNo) {
+    let ID=`H${hora}A${ano}M${mesNo}D${diaNo}`
+    var Answer = window.prompt(`Indica los detalles para tu cita el: ${diaNo}/${mesNo}/${ano} a las ${hora}`, `Nombre del doctor / Estado`);
+    window.alert("La info de tu cita: "+ Answer);
+    document.getElementById(ID).innerHTML = `<p> Info: ${Answer}</p>`;
 }
 
 function officeHours (hora,ano,mesNo,diaNo) {
-    return `${hora} <p class=emptySlot id='H${hora}A${ano}M${mesNo}D${diaNo}' onclick="addDate('${hora}', ${ano}, ${mesNo}, ${diaNo})"> <strong>Doctor:</strong> </br> Estado:</p>`
+    return `${hora} <p class=emptySlot id='H${hora}A${ano}M${mesNo}D${diaNo}' onclick="addAppointment('${hora}', ${ano}, ${mesNo}, ${diaNo})"> ... </p>`
 } 
 
 function settingDays(date, day){
