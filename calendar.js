@@ -108,7 +108,7 @@ function timeLapse(dateMin, dateMax) {
         });
         content+="<div id='calendarGrid_"+ (i+1) + "' class='calendarDiv''>";
         content+="<div class='calendarBtns'><button id='prevBtn' onclick='callprev()'> < Atrasar mes </button><h2>"+ mes + "-"+ firstDate.getFullYear() +"</h2> <button id='nextBtn' onclick='callnext()'> Adelantar mes > </button> </div>"; 
-        content+="<div class='weekBtns'> <button id='prevWeek' onclick='prevWeek()'> < Atrasar semana </button> <button id='nextWeek' onclick='nextWeek()'> Adelantar semana > </button> </div>";
+   /*      content+="<div class='weekBtns'> <button id='prevWeek' onclick='prevWeek()'> < Atrasar semana </button> <button id='nextWeek' onclick='nextWeek()'> Adelantar semana > </button> </div>"; */
         content+="<table class='calendarTable'>";
         content+="<thead >";
         weekDays.map(item=>{
@@ -145,7 +145,7 @@ function timeLapse(dateMin, dateMax) {
         }         
         content+="</tbody>";
         content+="</table>";
-        content+="<div class='weekBtns'> <button id='prevWeek' onclick='prevWeek()'> < Atrasar semana </button> <button id='nextWeek' onclick='nextWeek()'> Adelantar semana > </button> </div>";
+/*         content+="<div class='weekBtns'> <button id='prevWeek' onclick='prevWeek()'> < Atrasar semana </button> <button id='nextWeek' onclick='nextWeek()'> Adelantar semana > </button> </div>"; */
         content += "</div>";
         
         arrito.push(sn);
@@ -179,7 +179,7 @@ function callnext(){
     }
 }
 
-function prevWeek(){
+/* function prevWeek(){
     document.getElementById("semanaNo_"+weekNumber).style.display = "table-row";
     let allWeekArray=document.getElementsByClassName("semanas");
     weekNumber--;
@@ -198,7 +198,7 @@ function nextWeek(){
             allWeekArray[i].style.display = "none";
         }
         document.getElementById("semanaNo_"+weekNumber).style.display = "table-row";}
-}
+} */
 
 content = timeLapse(dateMin, dateMax);
 window.onload = (function (){document.getElementById("calendar").innerHTML=content})

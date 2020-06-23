@@ -50,7 +50,7 @@ h2 {
     justify-content: center;
 }
 
-.semanas {
+/* .semanas {
     display: none;
     width: 100%;
 }
@@ -58,7 +58,7 @@ h2 {
 #semanaNo_1{
     display: table-row;
     width: 100%;
-}
+} */
 
 #calendarGrid_1{
     display: block;
@@ -134,7 +134,7 @@ h2 {
     background-color: tomato;
 }
 
-.weekBtns {
+/* .weekBtns {
     text-align: center;
 }
 
@@ -146,7 +146,7 @@ h2 {
     border: none;
     color: white;
     height: 20px;
-}
+} */
 
 footer {
     font-size: 12px;
