@@ -1,26 +1,25 @@
-#ticon {
-    width: 80%;
+.mainLogo {
+    width: 60%;
 }
 
 body {
     font-family: 'Open Sans', sans-serif;
-    margin: 5% 5%;
     padding: 5% 5%;
     justify-content: center;
 }
 
-h1, p {
+h1, #description {
     padding: 0;
-    margin: 10px 50px;
+    margin: 0 50px;
 }
 
 #calendar {
     width: 100%;
-    margin: 5% 5%;
+    margin: 15px 0;
 }
 .calendarBtns {
     padding: 10px 0;
-    width: 100%; 
+    width: 80%; 
     display: flex;
     justify-content: space-around;
     height: 50px;
@@ -41,23 +40,22 @@ h1, p {
     display: none;
 }
 
-/* .semanas {
+.semanas {
     display: none;
     width: 100%;
-} */
+}
 
-/* #semanaNo_1{
+#semanaNo_1{
     display: table-row;
     width: 100%;
-} */
+}
 
 #calendarGrid_1{
     display: block;
 }
 
 .calendarTable{
-    width: 100%;
-    padding: 0 5%;
+    width: 80%;
     align-items: center;
     box-sizing: border-box;
 }
@@ -93,33 +91,41 @@ h1, p {
     height: fit-content;
 }
 
-#hora {
+#scheduler {
     height: fit-content;
     display: grid;
     grid-template-columns: 30px auto;
     grid-row: auto;
     background-color: #B1B1D3; 
     gap: 3px 0;
-}
-
-.timecontainer {
+    color: white;
     font-size: 15px;
     font-weight: bold;
-    color: rgba(255, 255, 255, 0.548);
     padding: 0;
-    text-align: right;
+    margin: 0;
+
 }
 
-#emptySlot {
-    cursor: pointer;
-    font-size: 10px;
-    margin-left: 15px;
-    display: grid;
-    align-items: center;
+.emptySlot {
     background: #fdfdfd6b;
+    color: black;
+    text-align: start;
+    height: fit-content;
+    width: 90%;
+    margin: 0px 5px;
+    font-size: 10px;
+    cursor: pointer;
     border-radius: 5px;
-    border: none;
 }
+
+.emptySlot:hover {
+    background-color: tomato;
+}
+
+
+.semanas:first-child {
+   border: 50px solid red;
+  }
 
 .weekBtns {
     text-align: center;

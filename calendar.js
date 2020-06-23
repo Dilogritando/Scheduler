@@ -1,10 +1,10 @@
 let dateMin = "2020/01/01";
-let dateMax = "2021/01/01";
+let dateMax = "2021/01/01"; 
 let calendarShow = 1; 
-let weekNumber = 1; 
+let contadorSemanas= 1;  
 let horas = [
     "5am",
-    " - ",
+    "5:30am",
     "6am",
     " - ",
     "7am",
@@ -40,16 +40,19 @@ let horas = [
     "10pm",
     " - ",
 ];
-let horasT = horas.map(officeHours)
 let arrito = [];
+let sn=1 
+let identificadorDia
 
-function officeHours (hora) {
-    return "<span class='timecontainer'>"+ hora +"</span> <button id=emptySlot onclick='addDate()'> </button>"
+function addDate(hora,ano,mesNo,diaNo) {
+    var respuesta = window.prompt(`Indica los detalles de tu cita el: ${hora}`, `Nombre del doctor / Estado`);
+    window.alert("La info de tu cita:"+ respuesta);
 }
 
-function addDate() {
-    window.alert("Cita!!");;
-}
+function officeHours (hora,ano,mesNo,diaNo) { 
+ /*    let dateReference = "H${hora}A${ano}M${mesNo}D${diaNo}" */
+    return `${hora} <p class=emptySlot id='H${hora}A${ano}M${mesNo}D${diaNo}' onclick="addDate('${hora}', ${ano})"> <strong>Doctor:</strong> </br> Estado:</p>`
+} 
 
 function settingDays(date, day){
     date = new Date(date);
@@ -120,10 +123,11 @@ function timeLapse(dateMin, dateMax) {
             content += "<tr class='semanas' id='semanaNo_" + sn + "'>"; 
             for (k = 0; k < 7; k++) {
                 displayNum = d < 10 ? "0" + d : d;
+                let horasT = horas.map(item => officeHours(item,firstDate.getFullYear(),(i+1),d));
                 if (d==1){
                     if (firstDate.toString().split(" ")[0] == weekDays[k].shortD) {  
                         content += "<td id='dayCell'>" + "<div id='dayDisplay'>" + displayNum + "</div>" + 
-                        "<div id='cellContent'> <div id='hora'>" + horasT.join('') +
+                        "<div id='cellContent'> <div id='scheduler'>" + horasT.join('') +
                         " </div> </div>" + "</td>";
                         d++;
                     } else {
@@ -132,7 +136,7 @@ function timeLapse(dateMin, dateMax) {
                 } else if (d>lastDate.getDate()) {
                     content += "<td></td>";
                 } else {
-                    content += "<td id='dayCell'>" + "<div id='dayDisplay'>" + displayNum + "</div>" + "<div id='cellContent'> <div id='hora'>" + horasT.join('') + "</div> </div>" + "</td>";
+                    content += "<td id='dayCell'>" + "<div id='dayDisplay'>" + displayNum + "</div>" + "<div id='cellContent'> <div id='scheduler'>" + horasT.join('') + "</div> </div>" + "</td>";
                     d++;
                 }
             }
@@ -174,115 +178,11 @@ function callnext(){
     }
 }
 
-
-/* BotonesSemanales */
-/* function prevWeek(){
-    document.getElementById("semanaNo_"+weekNumber).style.display = "table-row";
-    let allWeekArray=document.getElementsByClassName("semanas");
-    weekNumber--;
-    if (weekNumber<=allWeekArray.length){
-        for(let i=0; i < allWeekArray.length; i++) {
-            allWeekArray[i].style.display = "none";
-        }
-        document.getElementById("semanaNo_"+weekNumber).style.display = "table-row";}
-} */
 /* function nextWeek(){
-    
-    /* document.getElementById("semanaNo_"+arrito[i]).style.display = "table-row";
-
-    let mesactual = arrito[i]
-    for(i=0; i<=arrito.length; i++) {
-        while (mesactual.value 
-    } */
-
-
-    /* let allWeekArray=document.getElementsByClassName("semanas");
-    weekNumber++;
-    if (weekNumber<=allWeekArray.length){
-        for(let i=0; i < allWeekArray.length; i++) {
-            allWeekArray[i].style.display = "none";
-        }
-    } else if (weekNumber !==allWeekArray[i]) {
-        callnext
-    }
-} 
- */
-/* var list = ListaDeSemanas;
-var pageList = arrito;
-var currentPage = 1;
-var numberPerPage = 1;
-var numberOfPages = 1;  
-
-function loadWeeks(){
-    numberOfPages = getNumberOfPages();
-}
-
-function getNumberOfPages() {
-    return Math.ceil(list.length / numberPerPage);
-}
-
-function loadList() {
-    var begin = ((currentPage - 1) * numberPerPage);
-    var end = begin + numberPerPage;
-
-    pageList = list.slice(begin, end);
-    drawList();
-    check();
-}
-
-function drawList() {
-    document.getElementById("list").innerHTML = "";
-    
-    for (r = 0; r < pageList.length; r++) {
-        document.getElementById("list").innerHTML += pageList[r] + "";
-    }
-}
-
-function prevWeek(){
-    currentPage -= 1;
-    loadList();
-}
-function nextWeek(){
-    currentPage += 1;
-    loadList();
+    let currentWeek=document.getElementById("semanaNo_"+ sn);
+    sn++;
+    document.getElementById("semanaNo_"+ sn).style.display = "table-row";
 } */
 
-/* let appointment = {
-    psy: ID,
-    user: ID,
-    service: String, // Servicio
-    start_time: Date, // Inicio de cita
-    end_time: Date, // Fin de cita
-    duration: Number, // Duración de la cita
-    cost: Number, // Precio real
-	totalPayed: Number, // Cantidad que el usuario pago.
-    currency: String,
-	payed: Boolean,
-	status: String // ['Activa', 'Cancelada', 'Pendiente', 'Reagenda']
-}
-let cita = (appointment) {
-    Psiclogo=psy,
-    Paciente=user: ID,
-    Servicio=service: String, // Servicio
-    Inicio=start_time: Date, // Inicio de cita
-    Fin=end_time: Date, // Fin de cita
-    Duración=duration: Number, // Duración de la cita
-    Precio=cost: Number, // Precio real
-	Pagado=totalPayed: Number, // Cantidad que el usuario pago.
-    Moneda=currency: String,
-	Confirmado=payed: Boolean,
-	Estado=status: String // ['Activa', 'Cancelada', 'Pendiente', 'Reagenda']
-} */
-/* let MontNum = calendarShow-1 */
 content = timeLapse(dateMin, dateMax);
-/* console.log("Esto es arrito: " + arrito);
-console.log("Esto es arrito.length: " + arrito.length);
-console.log("Esto es CalendarShow: " + calendarShow);
-console.log("Esto es MonthNum: " + MontNum);
-let allWeek=document.getElementsByClassName("semanas")
-
-
-let allWeekArray=Array.from(arrito.values)
-console.log(arrito[0]) */
-
 window.onload = (function (){document.getElementById("calendar").innerHTML=content})
