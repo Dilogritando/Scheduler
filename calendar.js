@@ -51,8 +51,22 @@ function addAppointment(hora,ano,mesNo,diaNo) {
 }
 
 function officeHours (hora,ano,mesNo,diaNo) {
-    return `${hora} <p class=emptySlot id='H${hora}A${ano}M${mesNo}D${diaNo}' onclick="addAppointment('${hora}', ${ano}, ${mesNo}, ${diaNo})"> ... </p>`
+    return `${hora} <p class=emptySlot id='H${hora}A${ano}M${mesNo}D${diaNo}' onclick="addAppointment('${hora}', ${ano}, ${mesNo}, ${diaNo})"> (Disponible) </p>`
 } 
+
+/* let appTemplate = {
+    psy: `Profesional: ${psyID}`,
+    user: `Paciente: ${patientID}`,
+    service: `Servicio: ${service}`,
+    start_time: `Inicio ${dateApp}`,
+    end_time: `Fin ${dateApp}`,
+    duration: Number,
+    cost: Number,
+    totalPayed: Number,
+    currency: `Moneda`,
+    payed: Boolean,
+    status:['Activa', 'Cancelada', 'Pendiente', 'Reagenda']
+} */
 
 function settingDays(date, day){
     date = new Date(date);
